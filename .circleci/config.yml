@@ -21,9 +21,33 @@ jobs:
           name: Run lint
           command: pipenv run lint
       
+  build_deploy:
+  resource_class: small
+  docker:
+    - image: google/cloud-sdk
+  steps:
+    - checkout
+    - setup_remote_docker
+    - run:
+        name: Build docker image
+        command: docker build -t ${GOOGLE_CONTAINER_REGISTRY}/${GOOGLE_PROJECT}/${CIRCLE_PROJECT_REPONAME} .
+    - run:
+        name: Activate Service Account
+        command: |
+          echo $GOOGLE_CREDENTIALS > ${HOME}/gcloud-service-key.json
+          gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+    - run:
+        name: Deploy to Google Container Registry
+        command: |
+          gcloud auth configure-docker --quiet
+          docker push ${GOOGLE_CONTAINER_REGISTRY}/${GOOGLE_PROJECT}/${CIRCLE_PROJECT_REPONAME}
 
 
 workflows:
   build:
     jobs:
       - test
+      - build_deploy:
+          context: INFRASTRUCTURE
+          requires:
+            - test
