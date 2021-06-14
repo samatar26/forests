@@ -10,6 +10,8 @@ RUN pipenv lock -r > requirements.txt
 
 RUN pip install -r requirements.txt
 
+ARG DATABASE_PASSWORD=hello
+ENV DATABASE_PASSWORD=${DATABASE_PASSWORD}
 
 EXPOSE 8000
 
