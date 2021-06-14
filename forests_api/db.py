@@ -14,7 +14,7 @@ def engine():
         password=DATABASE_PASSWORD,
         query={
             "host": "{}/{}".format(
-                "/cloudsql", "samatar-dev-43f2d25b:europe-west3:forests"
+                "/cloudsql", "samatar-dev-43f2d25b:europe-west2:forests"
             )
         },
     )
