@@ -16,5 +16,7 @@ ENV DATABASE_PASSWORD=${DATABASE_PASSWORD}
 EXPOSE 8000
 
 COPY ./forests_api ./forests_api
+COPY ./models ./models
+
 
 CMD exec uvicorn forests_api.main:app --host 0.0.0.0
