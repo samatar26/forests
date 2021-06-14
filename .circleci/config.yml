@@ -65,8 +65,6 @@ workflows:
                 ignore: master
       - build_deploy:
           context: INFRASTRUCTURE
-          requires:
-            - test
           filters:
             branches:
               only: master
