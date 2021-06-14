@@ -10,6 +10,7 @@ autoflake = "*"
 isort = "*"
 pre-commit = "*"
 pytest = "*"
+requests = "*"
 
 [packages]
 fastapi = "*"
