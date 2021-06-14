@@ -30,6 +30,7 @@ class Forest(BaseModel):
     long_description: str
     carbon_stored: int
     carbon_stored_delta: int
+    cover: str
 
     class Config:
         orm_mode = True

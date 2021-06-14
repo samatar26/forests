@@ -18,3 +18,4 @@ class ForestsModel(Base):
     long_description = db.Column(db.String, nullable=False)
     carbon_stored = db.Column(db.Integer, nullable=False)
     carbon_stored_delta = db.Column(db.Integer, nullable=False)
+    cover = db.Column(db.String, nullable=False)

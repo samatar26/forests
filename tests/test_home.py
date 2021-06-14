@@ -17,6 +17,7 @@ def mock_forest(db_session):
             long_description="Jari Pará, an avoided deforestation project, preserves 50,480 hectares of primarily virgin Amazon forest. The project, which aims to promote forest conservation and reduce potential greenhouse gas emissions (GHG), likewise emphasizes the importance of local economic development. Over the project’s 30-year lifetime, it is expected to sequester nearly 15 million tonnes of carbon emissions. To prevent illegal deforestation, the project has pledged extensive surveillance and monitoring.",
             carbon_stored=100,
             carbon_stored_delta=10,
+            cover="https://img.com/2",
         )
     )
     db_session.commit()
@@ -69,3 +70,4 @@ def test_home_returns_additional_forest_details_for_the_details_page(
     )
     assert forest["carbon_stored"] == 100
     assert forest["carbon_stored_delta"] == 10
+    assert forest["cover"] == "https://img.com/2"
