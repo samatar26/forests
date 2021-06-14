@@ -1,0 +1,31 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+flake8 = "*"
+black = "*"
+autoflake = "*"
+isort = "*"
+pre-commit = "*"
+pytest = "*"
+
+[packages]
+fastapi = "*"
+sqlalchemy = "*"
+alembic = "*"
+psycopg2-binary = "*"
+uvicorn = "*"
+
+[requires]
+python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true
+
+[scripts]
+format = "bash -c \"autoflake --remove-all-unused-imports -i -r . && isort . && black .\""
+format-check = "bash -c \"autoflake --remove-all-unused-imports -c -r . && isort -c . && black --check --diff .\""
+setup = "bash -c \"cp .env.template .env && pre-commit install\""
+lint = "bash -c \"flake8 forests_api\""

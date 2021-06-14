@@ -1,0 +1,29 @@
+version: 2.1
+
+jobs:
+  test:
+    resource_class: small
+    docker:
+      - image: python:3.8-slim-buster
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            apt-get update
+            apt-get -y install build-essential
+            pip install pipenv
+            pipenv install --dev
+      - run:
+          name: format-check
+          command: pipenv run format-check
+      - run:
+          name: Run lint
+          command: pipenv run lint
+      
+
+
+workflows:
+  build:
+    jobs:
+      - test
