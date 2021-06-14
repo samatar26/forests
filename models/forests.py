@@ -10,3 +10,11 @@ class ForestsModel(Base):
     type = db.Column(db.String, nullable=False)
     thumbnail = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
+
+    country = db.Column(db.String, nullable=False)
+    latitude = db.Column(db.Integer, nullable=False)
+    longitude = db.Column(db.Integer, nullable=False)
+    area = db.Column(db.Integer, nullable=False)
+    long_description = db.Column(db.String, nullable=False)
+    carbon_stored = db.Column(db.Integer, nullable=False)
+    carbon_stored_delta = db.Column(db.Integer, nullable=False)
