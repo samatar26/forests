@@ -43,7 +43,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build docker image
-          command: docker build -t ${GOOGLE_CONTAINER_REGISTRY}/${GOOGLE_PROJECT}/${CIRCLE_PROJECT_REPONAME} .
+          command: docker build -t ${GOOGLE_CONTAINER_REGISTRY}/${GOOGLE_PROJECT}/${CIRCLE_PROJECT_REPONAME} --build-arg DATABASE_PASSWORD=${TF_VAR_forests_db_password} .
       - run:
           name: Activate Service Account
           command: |
