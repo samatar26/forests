@@ -59,7 +59,10 @@ jobs:
 workflows:
   build:
     jobs:
-      - test
+      - test:
+          filters:
+              branches:
+                ignore: master
       - build_deploy:
           context: INFRASTRUCTURE
           requires:
