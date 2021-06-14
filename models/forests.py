@@ -8,4 +8,5 @@ class ForestsModel(Base):
 
     name = db.Column(db.String, primary_key=True)
     type = db.Column(db.String, nullable=False)
+    thumbnail = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
