@@ -5,6 +5,13 @@ jobs:
     resource_class: small
     docker:
       - image: python:3.8-slim-buster
+        environment:
+          DATABASE_URL: postgresql://test:test@localhost:5432/test
+      - image: circleci/postgres:latest
+        environment:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: test
     steps:
       - checkout
       - run:
@@ -20,6 +27,12 @@ jobs:
       - run:
           name: Run lint
           command: pipenv run lint
+      - run:
+          name: Migrate test db
+          command: pipenv run alembic upgrade head
+      - run:
+          name: Run pytest
+          command: pipenv run pytest
       
   build_deploy:
     resource_class: small
@@ -51,3 +64,6 @@ workflows:
           context: INFRASTRUCTURE
           requires:
             - test
+          filters:
+            branches:
+              only: master
