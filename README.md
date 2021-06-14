@@ -1,7 +1,7 @@
 # All the forests :deciduous_tree: :deciduous_tree: :deciduous_tree:
 
 
-You can view the project on marhaban.samatar.dev
+You can view the project on https://marhaban.samatar.dev
 
 This service is running on cloud run (first time!) and it's connected to a cloud sql instance.
 ## You can install the project's dependencies by running:
